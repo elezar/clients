@@ -4,9 +4,9 @@ RUN apt-get update && \
     apt-get install --no-install-recommends -y \
         unzip
 
-ADD resources/jre-8u131-linux-x64-jce-unlimited.tar.gz /opt
+ADD resources/jre-8u152-linux-x64-jce-unlimited.tar.gz /opt
 
-ENV JAVA_HOME /opt/jre1.8.0_131
+ENV JAVA_HOME /opt/jre1.8.0_152
 
 ADD resources/0.30.3/bootstrap.zip /opt
 RUN cd /opt && \

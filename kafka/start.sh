@@ -66,6 +66,8 @@ elif [ "$KAFKA_CLIENT_MODE" == "consumer" ]; then
 
 
 elif [ "$KAFKA_CLIENT_MODE" == "test" ]; then
+    echo "Starting TEST client:"
+    env
     while :; do
         sleep 100000
     done
