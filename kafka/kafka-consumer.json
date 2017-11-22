@@ -28,6 +28,7 @@
     "env": {
         "JVM_MaxHeapSize": "512",
         "KAFKA_CLIENT_MODE": "consumer",
-        "KAFKA_SERVICE_NAME": "kafka"
+        "KAFKA_SERVICE_NAME": "kafka",
+        "KAFKA_TOPIC_NAME": "kafka-test-topic"
     }
 }
