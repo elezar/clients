@@ -9,6 +9,9 @@ ADD resources/jre-8u131-linux-x64-jce-unlimited.tar.gz /opt
 ENV JAVA_HOME /opt/jre1.8.0_131
 
 ADD resources/0.30.3/bootstrap.zip /opt
+RUN cd /opt && \
+	unzip bootstrap.zip && \
+	rm bootstrap.zip
 
 ENV KAFKA_CONFIG_ROOT /tmp/kafkaconfig
 RUN mkdir -p $KAFKA_CONFIG_ROOT
