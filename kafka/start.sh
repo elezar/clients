@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export JAVA_HOME
+export JAVA_HOME=/opt/jre1.8.0_152
 export KAFKA_OPTS="-Djava.security.auth.login.config=/tmp/kafkaconfig/client-jaas.conf -Djava.security.krb5.conf=/tmp/kafkaconfig/krb5.conf"
 
 KAFKA_SERVICE_NAME=${KAFKA_SERVICE_NAME:-secure-kafka}
