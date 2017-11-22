@@ -16,9 +16,10 @@ if [ $# -gt 1 ]; then
 fi
 
 if [ "$KAFKA_CLIENT_MODE" == "producer" ]; then
-    echo "Starting producer"
-
     KAFKA_BROKER_LIST=${KAFKA_BROKER_LIST:-"kafka-0-broker.${KAFKA_SERVICE_NAME}.autoip.dcos.thisdcos.directory:1025,kafka-1-broker.${KAFKA_SERVICE_NAME}.autoip.dcos.thisdcos.directory:1025,kafka-2-broker.${KAFKA_SERVICE_NAME}.autoip.dcos.thisdcos.directory:1025"}
+    echo "Starting producer with:"
+    echo "  KAFKA_BROKER_LIST=${KAFKA_BROKER_LIST}"
+    echo "  KAFKA_TOPIC=${KAFKA_TOPIC}"
 
     while :; do
         if [ -z $MESSAGE ]; then
