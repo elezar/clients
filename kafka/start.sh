@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
-export KAFKA_OPTS="-Djava.security.auth.login.config=/tmp/kafkaconfig/client-jaas.conf -Djava.security.krb5.conf=/tmp/kafkaconfig/krb5.conf"
+KAFKA_OPTS="-Djava.security.auth.login.config=/tmp/kafkaconfig/client-jaas.conf -Djava.security.krb5.conf=/tmp/kafkaconfig/krb5.conf"
+
+if [ x"$KAFKA_KERBEROS_DEBUG" != x ]; then
+KAFKA_OPTS="$KAFKA_OPTS -Dsun.security.krb5.debug=true"
+fi
+export KAFKA_OPTS
 
 KAFKA_SERVICE_NAME=${KAFKA_SERVICE_NAME:-kafka}
 KAFKA_CLIENT_MODE=${KAFKA_CLIENT_MODE:-consumer}
