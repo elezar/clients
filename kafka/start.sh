@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-export JAVA_HOME=/opt/jre1.8.0_152
 export KAFKA_OPTS="-Djava.security.auth.login.config=/tmp/kafkaconfig/client-jaas.conf -Djava.security.krb5.conf=/tmp/kafkaconfig/krb5.conf"
 
-KAFKA_SERVICE_NAME=${KAFKA_SERVICE_NAME:-secure-kafka}
+KAFKA_SERVICE_NAME=${KAFKA_SERVICE_NAME:-kafka}
 KAFKA_CLIENT_MODE=${KAFKA_CLIENT_MODE:-consumer}
 KAFKA_TOPIC=${KAFKA_TOPIC:-securetest}
+KAFKA_BROKER_LIST=${KAFKA_BROKER_LIST:-"kafka-0-broker.${KAFKA_SERVICE_NAME}.autoip.dcos.thisdcos.directory:1025,kafka-1-broker.${KAFKA_SERVICE_NAME}.autoip.dcos.thisdcos.directory:1025,kafka-2-broker.${KAFKA_SERVICE_NAME}.autoip.dcos.thisdcos.directory:1025"}
 
 if [ $# -gt 0 ]; then
     KAFKA_CLIENT_MODE=$1
@@ -17,7 +17,6 @@ if [ $# -gt 1 ]; then
 fi
 
 if [ "$KAFKA_CLIENT_MODE" == "producer" ]; then
-    KAFKA_BROKER_LIST=${KAFKA_BROKER_LIST:-"kafka-0-broker.${KAFKA_SERVICE_NAME}.autoip.dcos.thisdcos.directory:1025,kafka-1-broker.${KAFKA_SERVICE_NAME}.autoip.dcos.thisdcos.directory:1025,kafka-2-broker.${KAFKA_SERVICE_NAME}.autoip.dcos.thisdcos.directory:1025"}
     echo "Starting producer with:"
     echo "  KAFKA_BROKER_LIST=${KAFKA_BROKER_LIST}"
     echo "  KAFKA_TOPIC=${KAFKA_TOPIC}"
@@ -42,13 +41,9 @@ if [ "$KAFKA_CLIENT_MODE" == "producer" ]; then
     done
 
 elif [ "$KAFKA_CLIENT_MODE" == "consumer" ]; then
-
-    KAFKA_BROKER_LIST=${KAFKA_BROKER_LIST:-"kafka-0-broker.${KAFKA_SERVICE_NAME}.autoip.dcos.thisdcos.directory:1025"}
     echo "Starting consumer with:"
     echo "  KAFKA_BROKER_LIST=${KAFKA_BROKER_LIST}"
     echo "  KAFKA_TOPIC=${KAFKA_TOPIC}"
-
-
 
     if [ -z $MESSAGE ]; then
         echo "Starting tail consumer"
