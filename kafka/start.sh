@@ -64,7 +64,7 @@ elif [ "$KAFKA_CLIENT_MODE" == "consumer" ]; then
         kafka-console-consumer \
             --bootstrap-server ${KAFKA_BROKER_LIST} \
             --topic securetest --from-beginning --max-messages 1 \
-            --timeout-ms 10000 \
+            --timeout-ms 60000 \
             --consumer.config /tmp/kafkaconfig/client.properties
     fi
 
