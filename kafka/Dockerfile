@@ -8,7 +8,7 @@ ADD resources/jre-8u152-linux-x64-jce-unlimited.tar.gz /opt
 
 ENV JAVA_HOME /opt/jre1.8.0_152
 
-ADD resources/0.30.3/bootstrap.zip /opt
+ADD resources/0.40.5/bootstrap.zip /opt
 RUN cd /opt && \
 	unzip bootstrap.zip && \
 	rm bootstrap.zip
