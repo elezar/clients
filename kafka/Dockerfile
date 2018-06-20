@@ -1,4 +1,4 @@
-FROM confluentinc/cp-kafka
+FROM confluentinc/cp-kafka:4.1.0
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
